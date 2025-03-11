@@ -25,6 +25,9 @@ localization:
    * - :guilabel:`Indian E-waybill`
      - `l10n_in_edi_ewaybill`
      - :ref:`Indian E-way bill integration <india/e-waybill>`
+   * - :guilabel:`Indian E-waybill Stock`
+     - `l10n_in_ewaybill_stock`
+     - :ref:`Indian E-way bill Stock integration <india/e-waybill-stock>`
    * - :guilabel:`Indian - GSTR India eFiling`
      - `l10n_in_reports_gstr`
      - :ref:`Indian GST Return filing <india/gstr>`
@@ -182,6 +185,8 @@ website itself.
 E-Way bill
 ==========
 
+.. _india/e-waybill-setup:
+
 Setup
 -----
 
@@ -288,6 +293,39 @@ click :guilabel:`Request EDI Cancellation`.
    - Once you request to cancel the E-Way bill, Odoo automatically submits the JSON-signed file to
      the government portal. You can click :guilabel:`Process Now` if you want to process the invoice
      immediately.
+
+.. _india/e-waybill-stock:
+
+Indian Stock E-way bill
+=======================
+
+.. note::
+   Make sure to complete the :ref:`E-Way bill setup <india/e-waybill-setup>` before using E-Way bill Stock
+
+An **E-Way bill** can be created on :doc:`Receipts/Deliveries
+</applications/inventory_and_mrp/inventory/shipping_receiving/daily_operations>` in the Inventory
+app. To do so, go to :menuselection:`Inventory --> Operations --> Deliveries` or
+:menuselection:`Inventory --> Operations --> Receipts` and create a new
+**Delivery Order/Receipt**. Once the picking is validated, the E-Way bill for that picking can be
+created.
+
+.. note::
+   **E-Way bills** can be created for a :guilabel:`Receipt` on :guilabel:`Ready` state.
+
+Click :guilabel:`Create E-waybill/Challan` to create an E-Way bill for the picking.
+
+To validate the E-Way bill and send it to the NIC E-Way bill portal, click :guilabel:`Generate
+e-Waybill`.
+
+.. note::
+   To use the E-Way bill as a challan for the goods delivery without sending it to the NIC E-Waybill
+   portal, click :guilabel:`Use as Challan`.
+
+To print the E-waybill or the Challan, click the :icon:`fa-cog` :guilabel:`(gear)` icon and select
+:icon:`fa-print` :guilabel:`Ewaybill / Delivery Challan`.
+
+.. image:: india/e-waybill-stock-report.png
+   :alt: E-waybill/Challan Report
 
 .. _india/gstr:
 
