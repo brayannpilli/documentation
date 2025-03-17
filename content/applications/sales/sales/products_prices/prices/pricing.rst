@@ -36,7 +36,7 @@ modified at any time.
 
 .. note::
    The :guilabel:`Selectable` column is only applicable to Odoo **eCommerce**. This option allows
-   website visitors to choose a pricelist when shopping in your **eCommerce** website.
+   website visitors to choose a pricelist when shopping in the **eCommerce** website.
 
 .. note::
    In Odoo 17 (and above), you are *not required* to enter a pricelist in the :guilabel:`Pricelist`
@@ -64,6 +64,12 @@ to all companies in the database.
 
 If working in a multinational company, select the countries where this pricelist will apply under
 the :guilabel:`Country Groups` column.
+
+.. warning::
+   When a country group is assigned to a pricelist, country groups must be assigned to *all*
+   pricelists in the database. This is because when country groups are assigned to at least one
+   pricelist, Odoo will check the visitor’s IP address and apply the matching country group for
+   all pricelists.
 
 Price Rules tab
 ---------------
@@ -204,9 +210,34 @@ Ecommerce Tab
 Under the :guilabel:`Ecommerce` tab, price rules can be configured for products sold on an
 :doc:`Ecommerce website <../../../../websites/ecommerce/products>`.
 
+With pricelists, online stores can:
+
+- Display different prices for logged-in users versus guest visitors.
+- Offer region-specific pricing by assigning country groups.
+- Enable promotional discounts and loyalty-based pricing.
+- Allow customers to select from multiple pricing options.
+
+By leveraging pricelists, eCommerce businesses can implement strategic pricing models that drive
+sales while maintaining full control over pricing rules and promotions.
+
 To enable the pricelist to be visible, select the target website in the :guilabel:`Website` field.
 
-The :guilabel:`Selectable` can be enabled to allow the customer to choose this pricelist.
+.. important::
+   A pricelist is a website default for public users (users not signed in to Odoo accounts) only
+   once they are assigned to the website, and if they are not assigned a country group.
+
+The :guilabel:`Selectable` can be enabled to allow the customer to choose this pricelist when
+shopping on the website.
+
+.. important::
+   If one pricelist is set as selectable, that pricelist is applied as the default pricelist for
+   public users, and there will be no selectable option for the user.
+
+   If two or more pricelists are set as selectable, the first pricelist in the
+   sequence on the database configuration is applied as the default pricelist for public users.
+   There will be a selectable option for users to select the other available pricelists.
+
+
 
 Finally, promotional and loyalty codes can be added to the :guilabel:`E-commerce Promotional Code`
 field.
